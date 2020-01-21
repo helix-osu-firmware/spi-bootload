@@ -29,7 +29,7 @@ registers.
                 for behavior.
 
 * spi_cs_b_o, spi_mosi_o, spi_miso_i, spi_sclk_o : SPI Flash interface signals.
-  *** Note *** : To output using the CCLK output (used for configuration),
+  ***Note*** : To output using the CCLK output (used for configuration),
   you must instantiate the STARTUPE2 primitive and hook up spi_sclk_o to
   the USRCCLKO output.
 
