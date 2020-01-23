@@ -11,6 +11,9 @@ ASFLAGS=-6
 # target. Change this only.
 all: spi_bootloader.v
 
+clean:
+	rm -rf *.v *.obj *.s
+
 %.s : %.c
 	$(CC) $(CFLAGS) $<
 
