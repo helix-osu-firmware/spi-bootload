@@ -1,16 +1,16 @@
 /*
  * == pblaze-cc ==
  * source : spi_bootloader.c
- * create : Tue Jan 21 16:59:19 2020
- * modify : Tue Jan 21 16:59:19 2020
+ * create : Mon Feb  3 22:27:47 2020
+ * modify : Mon Feb  3 22:27:47 2020
  */
 `timescale 1 ps / 1ps
 
 /* 
  * == pblaze-as ==
  * source : spi_bootloader.s
- * create : Tue Jan 21 17:13:33 2020
- * modify : Tue Jan 21 17:13:33 2020
+ * create : Fri Feb  7 14:59:32 2020
+ * modify : Fri Feb  7 14:59:32 2020
  */
 /* 
  * == pblaze-ld ==
@@ -1073,7 +1073,8 @@ BRAM_TDP_MACRO #(
     .BRAM_SIZE("18Kb"),
     .DOA_REG(0),
     .DOB_REG(0),
-    .INIT(18'h00000),
+    .INIT_A(18'h00000),
+    .INIT_B(18'h00000),
     .READ_WIDTH_A(18),
     .WRITE_WIDTH_A(18),
     .READ_WIDTH_B(BRAM_PORT_WIDTH),
@@ -1177,7 +1178,7 @@ BRAM_TDP_MACRO #(
 ) ramdp_1024_x_18(
     .DIA (18'h00000),
     .ENA (enable),
-    .WEA (1'b0),
+    .WEA ({BRAM_WE_WIDTH{1'b0}}),
     .RSTA(1'b0),
     .CLKA (clk),
     .ADDRA (address),
