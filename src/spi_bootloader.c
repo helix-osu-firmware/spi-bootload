@@ -85,8 +85,8 @@ void check_command() {
   input( IF_CMD_PENDING, &s0);
   // check to see if nothing is going on.
   // if ANY of these bits are NOT set, this will be true
-  if (s0 ^ CMD_PENDING)
-    return;
+  psm("xor %1, %2", s0, CMD_PENDING);
+  psm("return Z");
   
   // yes, check to see if it validates.
   // To do this we input everything from 1E-23,
