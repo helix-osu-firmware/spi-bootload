@@ -65,7 +65,7 @@ module spi_bootload_tb;
     initial begin
         rst = 1;
         #150000; @(posedge clk) #1 rst = 0;
-        
+        #150000;
         write_word(1, 16'h0000);
         write_word(2, 16'h0000);
         write_word(3, 16'h9E9E);

@@ -1,6 +1,6 @@
 ;#!pblaze-cc source : spi_bootloader.c
-;#!pblaze-cc create : Thu Jun 11 11:49:31 2020
-;#!pblaze-cc modify : Thu Jun 11 11:49:31 2020
+;#!pblaze-cc create : Thu Jun 11 12:53:01 2020
+;#!pblaze-cc modify : Thu Jun 11 12:53:01 2020
 ;------------------------------------------------------------
 address 0x000
 boot:
@@ -436,21 +436,21 @@ _end_init:
 ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c
 get_arguments:
  L_308d974e25f2ae938b9e95cb0efd5c9d_46:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:249
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:250
   ;void get_arguments ()
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_47:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:250
-      input sD, 35
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:251
-      input sA, 34
+      input sD, 35
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:252
-      input sB, 33
+      input sA, 34
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:253
+      input sB, 33
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:254
       input sC, 32
 
  JOIN_11:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:249
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:250
   ;endfunc
 
 _end_get_arguments:
@@ -698,49 +698,49 @@ _end_pop1:
 ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c
 command_complete_with_timeout:
  L_308d974e25f2ae938b9e95cb0efd5c9d_74:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:233
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:234
   ;void command_complete_with_timeout ()
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_75:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:234
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:235
       move sF, 2
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_76:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:236
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:237
       ;if (sA != 0), L_308d974e25f2ae938b9e95cb0efd5c9d_77, L_308d974e25f2ae938b9e95cb0efd5c9d_78
       compare sA, 0
       jump Z, L_308d974e25f2ae938b9e95cb0efd5c9d_78
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_77:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:238
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:239
               or sF, 8
 
  JOIN_32:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:236
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:237
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_76
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_78:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:236
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:237
   command_finish:
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_79:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:239
-      move sA, 0
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:240
+      move sA, 0
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:241
       store sA, 24
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_80:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:241
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:242
   command_finish_nolock:
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_81:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:242
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:243
       output sF, 17
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:244
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:245
       output sF, 16
 
  JOIN_19:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:233
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:234
   ;endfunc
 
 _end_command_complete_with_timeout:
@@ -860,264 +860,266 @@ check_command:
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:88
       xor s0, 0xE
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:89
+      and s0, 0xE
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:90
       return NZ
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:98
-      move s0, 30
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:99
+      move s0, 30
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:100
       move s1, 0
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_92:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:101
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:102
       ;do
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_93:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:102
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:103
               input sF, (s0)
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:104
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:105
               xor s1, sF
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:106
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:107
               add s0, 1
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_94:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:108
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:109
       ;dowhile (s0 < 36), L_308d974e25f2ae938b9e95cb0efd5c9d_92, L_308d974e25f2ae938b9e95cb0efd5c9d_95
       compare s0, 36
       jump C, L_308d974e25f2ae938b9e95cb0efd5c9d_92
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_95:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:109
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:110
       ;if (s1 != 0), L_308d974e25f2ae938b9e95cb0efd5c9d_96, L_308d974e25f2ae938b9e95cb0efd5c9d_97
       compare s1, 0
       jump Z, L_308d974e25f2ae938b9e95cb0efd5c9d_97
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_96:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:110
-              move sF, 6
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:111
+              move sF, 6
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:112
               jump command_finish
 
  JOIN_33:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:109
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:110
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_95
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_97:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:120
-      input s0, 30
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:121
-      move sF, s0
+      input s0, 30
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:122
+      move sF, s0
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:123
       and sF, 238
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_98:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:124
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:125
       ;if (sF == 2), L_308d974e25f2ae938b9e95cb0efd5c9d_99, L_308d974e25f2ae938b9e95cb0efd5c9d_114
       compare sF, 2
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_114
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_99:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:126
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:127
               call get_arguments
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_100:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:128
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:129
               ;if (s0 ^ 16), L_308d974e25f2ae938b9e95cb0efd5c9d_101, L_308d974e25f2ae938b9e95cb0efd5c9d_102
               test s0, 16
               jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_102
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_101:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:129
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:130
                       move sD, 255
 
  JOIN_35:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:128
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:129
               ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_100
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_102:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:132
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:133
               and s0, 239
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_103:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:134
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:135
               ;if (s0 == 2), L_308d974e25f2ae938b9e95cb0efd5c9d_104, L_308d974e25f2ae938b9e95cb0efd5c9d_109
               compare s0, 2
               jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_109
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_104:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:135
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:136
                       call SPI_Flash_write_begin
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:137
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:138
                       move s1, 255
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_105:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:139
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:140
                       ;do
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_106:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:139
-                              input sA, 48
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:140
+                              input sA, 48
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:141
                               call SPI_tx_rx
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_107:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:142
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:143
                       ;dowhile (s1 -- -1), L_308d974e25f2ae938b9e95cb0efd5c9d_105, L_308d974e25f2ae938b9e95cb0efd5c9d_108
                       sub s1, 1
                       jump NC, L_308d974e25f2ae938b9e95cb0efd5c9d_105
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_108:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:142
-                      call SPI_Flash_write_complete
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:143
+                      call SPI_Flash_write_complete
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:144
                       jump command_complete_with_timeout
 
  JOIN_36:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:134
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:135
               ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_103
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_109:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:146
-              call SPI_Flash_read_begin
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:147
+              call SPI_Flash_read_begin
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:148
               move s1, 255
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_110:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:149
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:150
               ;do
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_111:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:149
-                      call SPI_tx_rx
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:150
+                      call SPI_tx_rx
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:151
                       output sA, 48
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_112:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:152
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:153
               ;dowhile (s1 -- -1), L_308d974e25f2ae938b9e95cb0efd5c9d_110, L_308d974e25f2ae938b9e95cb0efd5c9d_113
               sub s1, 1
               jump NC, L_308d974e25f2ae938b9e95cb0efd5c9d_110
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_113:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:152
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:153
               outputk 2, 3
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:154
-              move sF, 2
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:155
+              move sF, 2
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:156
               jump command_finish
 
  JOIN_34:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:124
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:125
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_98
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_114:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:158
-      move sF, s0
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:159
+      move sF, s0
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:160
       and sF, 253
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_115:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:164
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:165
       ;if (sF == 220), L_308d974e25f2ae938b9e95cb0efd5c9d_116, L_308d974e25f2ae938b9e95cb0efd5c9d_120
       compare sF, 220
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_120
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_116:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:164
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:165
               call get_arguments
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_117:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:170
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:171
               ;if (s0 & 2), L_308d974e25f2ae938b9e95cb0efd5c9d_118, L_308d974e25f2ae938b9e95cb0efd5c9d_119
               test s0, 2
               jump Z, L_308d974e25f2ae938b9e95cb0efd5c9d_119
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_118:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:171
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:172
                       move sD, 255
 
  JOIN_38:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:170
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:171
               ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_117
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_119:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:173
-              call SPI_Flash_erase_sector
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:174
+              call SPI_Flash_erase_sector
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:175
               jump command_complete_with_timeout
 
  JOIN_37:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:164
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:165
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_115
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_120:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:178
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:179
       ;if (s0 == 158), L_308d974e25f2ae938b9e95cb0efd5c9d_121, L_308d974e25f2ae938b9e95cb0efd5c9d_122
       compare s0, 158
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_122
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_121:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:179
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:180
               call SPI_Flash_read_ID
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:181
-              output sC, 34
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:182
-              output sB, 33
+              output sC, 34
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:183
-              output sA, 32
+              output sB, 33
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:184
-              move sF, 2
+              output sA, 32
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:185
+              move sF, 2
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:186
               jump command_finish
 
  JOIN_39:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:178
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:179
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_120
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_122:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:188
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:189
       ;if (s0 == 227), L_308d974e25f2ae938b9e95cb0efd5c9d_123, L_308d974e25f2ae938b9e95cb0efd5c9d_124
       compare s0, 227
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_124
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_123:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:188
-              call get_arguments
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:189
-              call SPI_Flash_write_nonvolatile_lock_bits
+              call get_arguments
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:190
+              call SPI_Flash_write_nonvolatile_lock_bits
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:191
               jump command_complete_with_timeout
 
  JOIN_40:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:188
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:189
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_122
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_124:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:193
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:194
       ;if (s0 == 228), L_308d974e25f2ae938b9e95cb0efd5c9d_125, L_308d974e25f2ae938b9e95cb0efd5c9d_126
       compare s0, 228
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_126
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_125:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:194
-              call SPI_Flash_erase_nonvolatile_lock_bits
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:195
+              call SPI_Flash_erase_nonvolatile_lock_bits
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:196
               jump command_complete_with_timeout
 
  JOIN_41:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:193
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:194
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_124
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_126:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:198
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:199
       ;if (s0 == 254), L_308d974e25f2ae938b9e95cb0efd5c9d_127, L_308d974e25f2ae938b9e95cb0efd5c9d_131
       compare s0, 254
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_131
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_127:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:198
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:199
               call get_arguments
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_128:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:201
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:202
               ;if (sD.sA.sB.sC == 1115252019), L_308d974e25f2ae938b9e95cb0efd5c9d_129, L_308d974e25f2ae938b9e95cb0efd5c9d_130
               compare sC, 51
               comparecy sB, 101
@@ -1126,83 +1128,83 @@ check_command:
               jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_130
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_129:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:201
-                      move sF, 1
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:202
-                      store sF, 24
+                      move sF, 1
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:203
-                      move sF, 2
+                      store sF, 24
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:204
+                      move sF, 2
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:205
                       jump command_finish_nolock
 
  JOIN_43:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:201
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:202
               ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_128
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_130:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:206
-              move sF, 6
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:207
+              move sF, 6
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:208
               jump command_finish
 
  JOIN_42:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:198
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:199
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_126
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_131:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:210
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:211
       ;if (s0 == 255), L_308d974e25f2ae938b9e95cb0efd5c9d_132, L_308d974e25f2ae938b9e95cb0efd5c9d_136
       compare s0, 255
       jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_136
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_132:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:211
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:212
               fetch sA, 24
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_133:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:213
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:214
               ;if (sA == 0), L_308d974e25f2ae938b9e95cb0efd5c9d_134, L_308d974e25f2ae938b9e95cb0efd5c9d_135
               compare sA, 0
               jump NZ, L_308d974e25f2ae938b9e95cb0efd5c9d_135
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_134:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:213
-                      move sF, 6
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:214
+                      move sF, 6
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:215
                       jump command_finish
 
  JOIN_45:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:213
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:214
               ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_133
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_135:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:216
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:217
               call get_arguments
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:218
-              store sC, 20
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:219
-              store sB, 21
+              store sC, 20
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:220
-              store sA, 22
+              store sB, 21
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:221
-              store sD, 23
+              store sA, 22
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:222
-              move sF, 2
+              store sD, 23
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:223
-              output sF, 17
+              move sF, 2
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:224
-              output sF, 16
+              output sF, 17
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:225
+              output sF, 16
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:226
               jump ICAP_reboot
 
  JOIN_44:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:210
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:211
       ;endif of L_308d974e25f2ae938b9e95cb0efd5c9d_131
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_136:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:228
-      move sF, 6
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:229
+      move sF, 6
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:230
       jump command_finish
 
  JOIN_22:
@@ -1347,19 +1349,19 @@ _end_SPI_Flash_wait_WIP:
 ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c
 spiisr:
  L_308d974e25f2ae938b9e95cb0efd5c9d_152:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:258
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:259
   ;bool_t spiisr (void)
 
  L_308d974e25f2ae938b9e95cb0efd5c9d_153:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:259
-      call SPI_Flash_reset
  ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:260
+      call SPI_Flash_reset
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:261
       move sF, 1
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:262
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:263
       output sF, 8
 
  JOIN_26:
- ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:258
+ ;/home/allison.122/repositories/github/tof_readout/spi/src/spi_bootloader.c:259
   ;endfunc
 
 _end_spiisr:
