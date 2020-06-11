@@ -63,8 +63,10 @@ module spi_bootload_tb;
     reg [31:0] idcode = {32{1'b0}};
     integer i;
     initial begin
-        rst = 1;
-        #150000; @(posedge clk) #1 rst = 0;
+        rst = 0;
+        #5000;
+        @(posedge clk) #1 rst = 1;
+        @(posedge clk) #1 rst = 0;
         #150000;
         write_word(1, 16'h0000);
         write_word(2, 16'h0000);

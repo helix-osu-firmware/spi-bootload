@@ -131,6 +131,15 @@ module spi_bootload( input clk_i,
     reg mosi = 0;
     reg miso = 0;
 
+    reg poweron_reset = 1;
+    reg [7:0] poweron_reset_delay = {8{1'b0}};
+    always @(posedge clk_i) begin
+        if (poweron_reset) poweron_reset_delay <= poweron_reset_delay[6:0] + 1;
+        if (poweron_reset_delay[7]) poweron_reset <= 0;
+    end
+
+    wire local_rst = (poweron_reset || rst_i);
+
     wire [7:0] fifo_data_out;
     wire fifo_data_valid;
     wire [15:0] fifo_addr_data = { {7{1'b0}}, !fifo_data_valid, fifo_data_out };
@@ -289,14 +298,14 @@ module spi_bootload( input clk_i,
 
         // Command pending. Port at 0x10.
         // Automatically clears when written to.
-        if (write_strobe && (port_id[5:4] == 1) && (port_id[1:0] == 2'b00))
+        if ((write_strobe && (port_id[5:4] == 1) && (port_id[1:0] == 2'b00)) || local_rst)
             cmd_pending <= #1 {4{1'b0}};
         else if (en_i && wr_i)
             cmd_pending[adr_i] <= #1 1'b1;
         
         // Command status. Port at 0x11
         // clear status on rising edge of cmd_busy signal
-        if (reset || (cmd_busy && !cmd_was_busy)) begin
+        if (reset || local_rst || (cmd_busy && !cmd_was_busy)) begin
             cmd_complete <= #1 0;
             cmd_error <= #1 0;
             cmd_timeout <= #1 0;            
@@ -395,7 +404,7 @@ module spi_bootload( input clk_i,
                         .in_port(in_port),.out_port(out_port),.port_id(port_id),
                         .write_strobe(write_strobe),.k_write_strobe(k_write_strobe),
                         .read_strobe(read_strobe),.interrupt(interrupt),.interrupt_ack(interrupt_ack),
-                        .sleep(sleep),.reset(rst_i || reset),.clk(clk_i));
+                        .sleep(sleep),.reset(local_rst || reset),.clk(clk_i));
 
     // sleaze the top 1/8th of the ROM as a poor man's FIFO.                        
     // we have to be perpetually enabled to act as a FWFT FIFO.
