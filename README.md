@@ -107,13 +107,13 @@ Bits [15:8] contain a checksum for the desired
 command/arguments. In other words, command[15:8]
 must contain the XOR of
 
-'''
+```
 command[7:0]
 arg0[7:0]
 arg0[15:8]
 arg1[7:0]
 arg1[15:8]
-'''
+```
 
 Commands will not be executed until a write to register
 1, 2, and 3 occur. It is therefore recommended that
@@ -123,12 +123,12 @@ the expected command will always be executed.
 
 Reading register 3 returns a 4 bit value, which is
 
-'''
+```
 bit 3: command timed out
 bit 2: command error (either unrecognized or bad checksum)
 bit 1: command complete
 bit 0: command busy
-'''
+```
 
 Note that _all_ commands will complete at a certain point
 if the bootloader is functioning properly, even if the SPI
