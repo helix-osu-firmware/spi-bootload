@@ -48,12 +48,13 @@
 #define PP_READ_MASK    0xEE
 // bit set in PP/READ to use 4-byte address
 #define PP_READ_4BIT    0x10
-#define SECTOR_ERASE    0xDE  //1101_1110
+// sector erase is 0xD8
+#define SECTOR_ERASE    0xD8  //1101_1000
 #define SECTOR_ERASE_4  0xDC  //1101_1100
-#define SECTOR_ERASE_4BIT 0x02
+#define SECTOR_ERASE_4BIT 0x04
 
 // this is the mask for either of the two
-#define SECTOR_ERASE_MASK 0xFD // 1111 1101
+#define SECTOR_ERASE_MASK 0xFD // 1111 1011
 
 #define READ_ID 0x9E
 #define WRITE_NONVOLATILE_LOCK_BITS 0xE3
@@ -158,10 +159,10 @@ void check_command() {
   // check sector erase and its 4 bit variant
   sSpare = cmd;
   sSpare &= SECTOR_ERASE_MASK;
-  // check against SECTOR_ERASE_4, since
+  // check against SECTOR_ERASE, since
   // we're actually checking
   // (cmd & SECTOR_ERASE_MASK) == (SECTOR_ERASE & SECTOR_ERASE_MASK)
-  if (sSpare == SECTOR_ERASE_4) {
+  if (sSpare == SECTOR_ERASE) {
     get_arguments();
     // now check to see if the 4BIT is SET
     // 3-byte operation = 0xDE (bit is SET)
