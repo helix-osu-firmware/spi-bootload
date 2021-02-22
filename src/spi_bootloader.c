@@ -164,11 +164,10 @@ void check_command() {
   // (cmd & SECTOR_ERASE_MASK) == (SECTOR_ERASE & SECTOR_ERASE_MASK)
   if (sSpare == SECTOR_ERASE) {
     get_arguments();
-    // now check to see if the 4BIT is SET
-    // 3-byte operation = 0xDE (bit is SET)
-    // 4-byte operation = 0xDC (bit is NOT SET)x
+    // 3-byte operation = 0xD8 (bit is NOT SET)
+    // 4-byte operation = 0xDC (bit is SET)
     // because, god damnit, nothing can be easy
-    if (cmd & SECTOR_ERASE_4BIT) {
+    if (cmd ^ SECTOR_ERASE_4BIT) {
       // Must be a 3 byte operation
       sD = 0xFF;
     }
