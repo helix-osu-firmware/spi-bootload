@@ -53,13 +53,7 @@ See the HELIX SPI Wrapper section for details on this.
 
 ## Parameters/Generics
 
-* WAIT_RESPONSE : either "TRUE" or "FALSE". This changes the dat_valid_o
-                  behavior. If WAIT_RESPONSE is "FALSE", then dat_valid_o
-		  will ALWAYS be asserted the cycle after en_i (so there's
-		  a pure 1-cycle latency). If WAIT_RESPONSE is "TRUE"
-		  then dat_valid_o will either be true the cycle after
-		  en_i (for registers 0/1/2) or many, many cycles later
-		  (for register 3).
+* WAIT_RESPONSE : either "TRUE" or "FALSE". Just use "FALSE"!
 * IDCODE : This is the IDCODE of the FPGA device. Only used for simulation
            for the ICAP behavior.
 
