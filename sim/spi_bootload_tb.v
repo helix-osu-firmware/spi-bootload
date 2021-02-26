@@ -112,10 +112,10 @@ module spi_bootload_tb;
         end
         #100;
 
-        // try sector erase
+        // try sector erase, now with ACTUAL SECTOR ERASE command
         write_word(1, 16'h0000);
         write_word(2, 16'h0000);
-        write_word(3, 16'hDEDE);
+        write_word(3, 16'hD8D8);
         read_word(3, tmp);
 
         // unlock ICAP

@@ -53,13 +53,7 @@ See the HELIX SPI Wrapper section for details on this.
 
 ## Parameters/Generics
 
-* WAIT_RESPONSE : either "TRUE" or "FALSE". This changes the dat_valid_o
-                  behavior. If WAIT_RESPONSE is "FALSE", then dat_valid_o
-		  will ALWAYS be asserted the cycle after en_i (so there's
-		  a pure 1-cycle latency). If WAIT_RESPONSE is "TRUE"
-		  then dat_valid_o will either be true the cycle after
-		  en_i (for registers 0/1/2) or many, many cycles later
-		  (for register 3).
+* WAIT_RESPONSE : either "TRUE" or "FALSE". Just use "FALSE"!
 * IDCODE : This is the IDCODE of the FPGA device. Only used for simulation
            for the ICAP behavior.
 
@@ -149,7 +143,8 @@ register 3 can be polled until bit 0 is not set.
 Except for ICAP_UNLOCK/ICAP_REBOOT, all commands correspond
 to the actual command sent to the SPI Flash.
 
-* 0x9E : READ_ID - Read SPI flash device ID.
+* 0x9E : READ_ID - Read SPI flash device ID 
+         (core actually sends 0x9F to the device, just use 0x9E for the command, not fixing this)
 * 0x03 : READ - Read page. arg1/arg0 specify the ***24-BIT*** address.
          This is for devices that are less than 256 Mbit.
 * 0x13 : 4READ - Read page. arg1/arg0 specify the 32-bit address of the page.
@@ -158,7 +153,7 @@ to the actual command sent to the SPI Flash.
          This is for devices that are less than 256 Mbit.
 * 0x12 : 4PAGE_PROGRAM - Write page. arg1/arg0 specify the 32-bit address.
          This is for devices that are 256 Mbit or more.
-* 0xDE : SECTOR_ERASE - Erase sector. The size of each sector is device
+* 0xD8 : SECTOR_ERASE - Erase sector. The size of each sector is device
          specific. arg1/arg0 specify the ***24-BIT*** address.
 	 This is for devices that are less than 256 Mbit.
 * 0xDC : SECTOR_ERASE_4 - 32-bit version of SECTOR_ERASE.
@@ -173,6 +168,9 @@ to the actual command sent to the SPI Flash.
          start address (WBSTAR) specified in arg1/arg0.
 	 This command is locked and will not execute unless preceded
 	 by an ICAP_UNLOCK command.
+	 
+Note that WBSTAR isn't the 32-bit address for 256 Mbit+ devices: it's
+the address *downshifted by 8*. See table 7-2 in UG470.
 
 # HELIX SPI Wrapper
 
