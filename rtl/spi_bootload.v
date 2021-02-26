@@ -121,6 +121,8 @@ module spi_bootload( input clk_i,
                      output spi_mosi_o,
                      input spi_miso_i);
 
+    parameter USE_ICAPE2 = "TRUE";
+
     parameter WAIT_RESPONSE = "TRUE";
     parameter [31:0] IDCODE = 32'h0362D093;
     
@@ -232,10 +234,15 @@ module spi_bootload( input clk_i,
     assign icap_in[15:8] = reverse_byte(arg0[15:8]);
     assign icap_in[23:16] = reverse_byte(arg1[7:0]);
     assign icap_in[31:24] = reverse_byte(arg1[15:8]);    
-    (* KEEP = "TRUE" *)
-    ICAPE2 #(.DEVICE_ID(IDCODE),.ICAP_WIDTH("X32"),.SIM_CFG_FILE_NAME("NONE")) 
-        u_icap(.I(icap_in),.O(),.CSIB(icap_csib),.RDWRB(icap_rdwrb),.CLK(clk_i));
-        
+
+    generate
+        if (USE_ICAPE2 == "TRUE") begin : IC
+            (* KEEP = "TRUE" *)
+            ICAPE2 #(.DEVICE_ID(IDCODE),.ICAP_WIDTH("X32"),.SIM_CFG_FILE_NAME("NONE")) 
+                u_icap(.I(icap_in),.O(),.CSIB(icap_csib),.RDWRB(icap_rdwrb),.CLK(clk_i));
+        end
+    endgenerate
+            
     always @(posedge clk_i) begin
         //// INPUT PORTS ////
 

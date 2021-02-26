@@ -63,6 +63,12 @@ See the HELIX SPI Wrapper section for details on this.
 * IDCODE : This is the IDCODE of the FPGA device. Only used for simulation
            for the ICAP behavior.
 
+* USE_ICAPE2 : either "TRUE" or "FALSE" (default TRUE). This avoids instantiating
+               the ICAPE2 in behavioral simulations to avoid the stupidity caused
+	       by GSR holding all Xilinx primitives in reset. MAKE SURE this is
+	       "TRUE" for a proper build because otherwise the IPROG command
+	       won't work!
+
 ## Register 0: FIFO keyhole
 
 This is a keyhole to a pseudo-FIFO to store data either to be written
@@ -246,6 +252,13 @@ Note that both of the testbenches wait for a fairly long whiile before
 releasing reset (~microseconds). This is because with the ICAP included,
 GSR takes much longer (~1.25 us) to release, and only the Xilinx
 primitives respond to GSR.
+
+If you want to run the testbench (spi_bootload_tb.v) without the
+SPI flash, there's a parameter there to turn it off (USE_FLASH).
+Note that in that case, IDCODE will read 0, *but the simulation will 'hang' after that*
+since without the actual SPI flash, the bootloader will just continually
+loop waiting for the WEL to complete. It'll actually timeout eventually,
+it'll just take forever.
 
 # PicoBlaze notes
 

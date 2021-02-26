@@ -2,6 +2,8 @@
 
 module spi_bootload_tb;
 
+    parameter USE_FLASH = "TRUE";
+
     wire clk;
     tb_rclk #(.PERIOD(12.5)) u_clk(.clk(clk));
     
@@ -27,14 +29,18 @@ module spi_bootload_tb;
         
     spi_bootload u_spi(.clk_i(clk),.rst_i(rst),.spi_cs_b_o(cs_b),.spi_sclk_o(sclk),.spi_mosi_o(mosi),.spi_miso_i(miso),
                         .adr_i(address),.dat_i(dat_in),.dat_o(dat_out),.en_i(en),.wr_i(write),.dat_valid_o(valid));
-    N25Qxxx u_memory( .S(cs_b),.C_(sclk), .DQ0(mosi),.DQ1(miso),.Vcc(3300),.HOLD_DQ3(hold),.Vpp_W_DQ2(w));
-
+                        
+    generate
+        if (USE_FLASH == "TRUE") begin : FL                        
+            N25Qxxx u_memory( .S(cs_b),.C_(sclk), .DQ0(mosi),.DQ1(miso),.Vcc(3300),.HOLD_DQ3(hold),.Vpp_W_DQ2(w));
+        end
+    endgenerate
     // dig out the programming status stuff
-    wire PROGB = u_spi.u_icap.SIM_CONFIGE2_INST.prog_b_t;
-    wire DONE = u_spi.u_icap.SIM_CONFIGE2_INST.DONE;
-    wire GSR = u_spi.u_icap.SIM_CONFIGE2_INST.GSR;
-    wire GTS = u_spi.u_icap.SIM_CONFIGE2_INST.GTS;
-    wire GWE = u_spi.u_icap.SIM_CONFIGE2_INST.GWE;
+    wire PROGB = u_spi.IC.u_icap.SIM_CONFIGE2_INST.prog_b_t;
+    wire DONE = u_spi.IC.u_icap.SIM_CONFIGE2_INST.DONE;
+    wire GSR = u_spi.IC.u_icap.SIM_CONFIGE2_INST.GSR;
+    wire GTS = u_spi.IC.u_icap.SIM_CONFIGE2_INST.GTS;
+    wire GWE = u_spi.IC.u_icap.SIM_CONFIGE2_INST.GWE;
     
     task write_word;
         input [1:0] addr;
