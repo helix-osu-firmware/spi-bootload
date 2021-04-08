@@ -1,6 +1,6 @@
 ;#!pblaze-cc source : spi_bootloader.c
-;#!pblaze-cc create : Mon Feb 22 13:02:51 2021
-;#!pblaze-cc modify : Mon Feb 22 13:02:51 2021
+;#!pblaze-cc create : Thu Apr  8 15:12:00 2021
+;#!pblaze-cc modify : Thu Apr  8 15:12:00 2021
 ;------------------------------------------------------------
 address 0x000
 boot:
@@ -1014,7 +1014,7 @@ check_command:
  ;/home/Patrick Allison/repositories/github/tof_readout/spi/src/spi_bootloader.c:160
       move sF, s0
  ;/home/Patrick Allison/repositories/github/tof_readout/spi/src/spi_bootloader.c:161
-      and sF, 253
+      and sF, 251
 
  L_4fc4e14f2da0fcf42d59a7eb11d8b141_115:
  ;/home/Patrick Allison/repositories/github/tof_readout/spi/src/spi_bootloader.c:166

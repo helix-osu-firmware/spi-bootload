@@ -54,7 +54,7 @@
 #define SECTOR_ERASE_4BIT 0x04
 
 // this is the mask for either of the two
-#define SECTOR_ERASE_MASK 0xFD // 1111 1011
+#define SECTOR_ERASE_MASK 0xFB // 1111 1011
 
 #define READ_ID 0x9E
 #define WRITE_NONVOLATILE_LOCK_BITS 0xE3
