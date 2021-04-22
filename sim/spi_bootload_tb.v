@@ -59,8 +59,8 @@ module spi_bootload_tb;
                 if (valid) begin
                     read_data <= dat_out;
                     $display("read from %x : %x", addr, dat_out);
+                    #1 en = 0; @(posedge clk);                    
                 end
-                #1 en = 0;
             end
         end
     endtask
@@ -74,6 +74,26 @@ module spi_bootload_tb;
         @(posedge clk) #1 rst = 1;
         @(posedge clk) #1 rst = 0;
         #150000;
+        // test FIFO
+        write_word(0, 16'h8000);
+        write_word(0, 16'h0055);
+        write_word(0, 16'h00AA);
+        write_word(0, 16'h8000);
+        read_word(0, tmp);
+        $display("readback: %x", tmp);
+        if (tmp != 16'h0155) begin
+            $error("readback incorrect, expected 0155");
+        end
+        read_word(0, tmp);
+        $display("readback: %x", tmp);
+        if (tmp != 16'h01AA) begin
+            $error("readback incorrect, expected 01AA");
+        end        
+        read_word(0, tmp);
+        $display("readback: %x", tmp);
+        if (tmp != 16'h0100) begin
+            $error("readback incorrect, expected 0100");
+        end
         write_word(1, 16'h0000);
         write_word(2, 16'h0000);
         write_word(3, 16'h9E9E);
