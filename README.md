@@ -16,8 +16,10 @@ registers.
 
 ## Signal names
 
-* en_i : 1 indicates a transaction on the bus. Should be a flag (single
-         cycle high).
+* en_i : 1 indicates a transaction on the bus. Only 1 transaction occurs
+         for every assertion of en_i: in order to execute multiple transactions,
+	 en_i must be deasserted for at least one clock cycle (i.e.
+	 transactions occur on the rising edge).
 * wr_i : 1 indicates that this transaction is a write. Qualified by
          en_i, so if en_i is 0, this bit is do-not-care.
 * adr_i : 2-bit input indicating which register is being accessed.
@@ -74,6 +76,13 @@ sector size device-dependent).
 Data is written 1 byte at a time, even though it's a 16-bit data
 path. If bit 15 (the high bit) is set, this resets the FIFO pointer
 to 0 (but NOT the FIFO data).
+
+The low byte (bits[7:0]) contain the data. Bit[8] is set if this
+data is NOT valid SPI data. It is possible to read back the
+FIFO to verify the data to be written (write the data, reset
+the pointer, then read the data) - however, if this is done, bit
+8 will be set for those reads, indicating that the data did not
+come from the SPI flash, but is just a pure readback.
 
 ***Any command*** resets the FIFO pointer to 0. However, the only
 command that changes the FIFO _data_ is a read operation.
@@ -172,6 +181,10 @@ to the actual command sent to the SPI Flash.
 Note that WBSTAR isn't the 32-bit address for 256 Mbit+ devices: it's
 the address *downshifted by 8*. See table 7-2 in UG470.
 
+Note 2: Sector Erase commands can take an absurdly long time. For the large SPIs
+used on HELIX, the sector erase internal timeout is 12 **seconds**. You _must_ keep
+checking for completion before sending another command!!
+
 # HELIX SPI Wrapper
 
 The HELIX SPI Wrapper allows for simple integration into any design
@@ -257,6 +270,21 @@ Note that in that case, IDCODE will read 0, *but the simulation will 'hang' afte
 since without the actual SPI flash, the bootloader will just continually
 loop waiting for the WEL to complete. It'll actually timeout eventually,
 it'll just take forever.
+
+## Interface verification
+
+The interface itself can be directly tested without using the SPI core
+by using the FIFO in readback.
+
+1. Write 0x8000 to register 0 to reset the FIFO address.
+2. Write 0x55 to register 0.
+3. Write 0xAA to register 0.
+4. Write 0x8000 to register 0 to reset the FIFO address.
+5. Read register 0. Should return 0x155.
+6. Read register 0. Should return 0x1AA.
+7. Read register 0. Should return 0x100 in simulation, since this is the initial value of the BRAM. In hardware this will return previously-written data.
+
+This test is done in the beginning of spi_bootload_tb.v.
 
 # PicoBlaze notes
 
