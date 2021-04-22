@@ -208,6 +208,9 @@ module spi_bootload( input clk_i,
     wire fifo_if_read = (en_i && !wr_i && (adr_i == 2'b00));
     wire fifo_if_reset = (en_i && wr_i && (adr_i == 2'b00) && dat_i[15]);
 
+    reg fifo_if_read_reg = 0;
+    reg fifo_if_write_reg = 0;
+  
     reg fifo_write = 0;
     reg fifo_is_pb_write = 0;
     reg fifo_read = 0;
@@ -378,9 +381,12 @@ module spi_bootload( input clk_i,
         cmd_busy <= #1 &cmd_pending[3:1];
         cmd_was_busy <= #1 cmd_busy;
         
+        fifo_if_write_reg <= fifo_if_write && !fifo_if_reset;
+        fifo_if_read_reg <= fifo_if_read;
+      
         // FIFO multiplexing. Software needs to NOT eff this up.
-        fifo_read <= #1 ((fifo_if_read && dat_valid) || fifo_pb_read);
-        fifo_write <= #1 ((fifo_if_write && !fifo_if_reset) || fifo_pb_write);
+        fifo_read <= #1 ((fifo_if_read && !fifo_if_read_reg) || fifo_pb_read);
+        fifo_write <= #1 ((fifo_if_write && !fifo_if_reset && !fifo_if_write_reg) || fifo_pb_write);
         fifo_is_pb_write <= #1 fifo_pb_write;
         fifo_data <= #1 (fifo_pb_write) ? out_port : dat_i;        
     end
@@ -463,7 +469,7 @@ module spi_bootload( input clk_i,
     assign spi_sclk_o = sclk;
     assign spi_mosi_o = mosi;
     assign dat_o = dat;
-    assign dat_valid_o = dat_valid && en_i;
+    assign dat_valid_o = dat_valid;
     
 endmodule
                                           
