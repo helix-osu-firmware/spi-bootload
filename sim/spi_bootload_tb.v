@@ -59,9 +59,10 @@ module spi_bootload_tb;
                 if (valid) begin
                     read_data <= dat_out;
                     $display("read from %x : %x", addr, dat_out);
-                    #1 en = 0; @(posedge clk);                    
+                    #1 en = 0;           
                 end
             end
+            @(posedge clk);
         end
     endtask
     
