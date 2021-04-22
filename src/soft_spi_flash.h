@@ -47,11 +47,13 @@
 #define SPI_FLASH_ENTER_DPWDN 0xB9
 #define SPI_FLASH_RELEASE_DPWDN 0xAB
 
-// these are in ~6.5 ms increments
+// these are in 56 ms increments above 6.5 ms.
+// ~12 seconds
+#define SPI_FLASH_SECTOR_ERASE_LONG_TIMEOUT 220
 // ~1.2 seconds
-#define SPI_FLASH_SECTOR_ERASE_TIMEOUT 170
+#define SPI_FLASH_SECTOR_ERASE_TIMEOUT 22
 // 6.5 ms
-#define SPI_FLASH_PAGE_PROGRAM_TIMEOUT 1
+#define SPI_FLASH_PAGE_PROGRAM_TIMEOUT 0
 
 void SPI_Flash_single_command(void) __attribute__((noreturn));
 void SPI_Flash_single_command() {
@@ -197,8 +199,10 @@ void SPI_Flash_write_complete() {
   pop1();
 }
 
-// for PP, pass sA = 1, becomes 8*256 = 2048 cycles (~7 ms)
-// for SE, pass sA = 170, becomes 348,160 cycles (~1.11 s)
+// TIMEOUT CHANGES FOR THE JACKASS SPANSION CORE
+// for PP, pass sA = 0. becomes 8*256 = 2048 cycles (~7 ms)
+// for SE short, pass sA = 22, becomes 362,496 cycles (~1.24 s)
+// for SE long, pass SA = 220, becomes 3,606,528 cycles (~12 s)
 // SPI_Flash_wait_WIP: waits for the WIP bit to clear
 //    uses: sA/sB/sC/sD/sE
 //    returns: sA=0 on success, sA = 1 on timeout
@@ -207,10 +211,10 @@ void SPI_Flash_wait_WIP() {
   // so we need sC/sD/sE.
   // We're a terminating function so no one
   // above us needs anything.
-  sD = sA;
-  sE.sD <<= 1;
-  sE.sD <<= 1;
-  sE.sD <<= 1;
+  sE = sA;
+  sE.sD >>= 1;
+  sE.sD >>= 1;
+  sD |= 0x8;
   sC = 0;
   do {
     SPI_Flash_read_SR();
@@ -239,14 +243,17 @@ void SPI_Flash_erase_sector() {
   if (sD != 0xFF) {
     sA = SPI_FLASH_4SE;
     SPI_tx_rx();
-    sA = sD;
+    sA = sD;    
   }
   SPI_tx_rx();
   SPI_Flash_tx_address();
   SPI_DISABLE();  
  SPI_Flash_erase_sector_wait:
-  // set timeout
+  // set timeout. sD is still unaffected here. Use it again.
   sA = SPI_FLASH_SECTOR_ERASE_TIMEOUT;
+  if (sD == 0) {
+    sA = SPI_FLASH_SECTOR_ERASE_LONG_TIMEOUT;
+  }
   psm("jump SPI_Flash_wait_WIP");
 }
 
